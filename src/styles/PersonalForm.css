@@ -1,0 +1,17 @@
+.personal__input{
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+
+  color: white;
+  padding: 0px 10px;
+  font-size: 12pt;
+  transition: box-shadow 300ms;
+  margin-top: 5px;
+}
+.personal__input:focus{
+  outline: none;
+  box-shadow: inset 0px -3px 4px 0px rgb(0, 178, 255);
+}
