@@ -28,8 +28,8 @@ class App extends React.Component {
           value: '',
         },
       },
-      experience: [],
-      education: [],
+      experience: {},
+      education: {},
     };
   }
 

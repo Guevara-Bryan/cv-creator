@@ -14,3 +14,19 @@
 .preview::-webkit-scrollbar{
     display: none;
 }
+
+.personal_section{
+    width: 100%;
+    height: 2in;
+    background-color: var(--button-careful-color);
+}
+.experience_section{
+    width: 100%;
+    height: 7in;
+    background-color: var(--button-good-color);
+}
+.education_section{
+    width: 100%;
+    height: 2in;
+    background-color: var(--section-color);
+}

@@ -10,11 +10,5 @@
 }
 
 .preview__download-button{
-  width: 80%;
-  height: 50px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  border-radius: 10px;
-  font-size: 12pt;
+  background-color: var(--button-good-color);
 }

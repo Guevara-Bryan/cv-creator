@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/Preview.css';
+import {nanoid} from 'nanoid';
 
 class Preview extends React.Component {
   constructor(props) {
@@ -21,7 +22,16 @@ class Preview extends React.Component {
         </div>
 
         <div className="experience_section">
+            {Object.entries(experience).map(entry =>{
+                return<div key={nanoid()}>
+                    <p>{entry[1].company}</p>
+                    <p>{entry[1].position}</p>
+                    <p>{entry[1].description}</p>
+                </div>
+            })}
         </div>
+
+        <div className="education_section"></div>
       </div>
     );
   }
