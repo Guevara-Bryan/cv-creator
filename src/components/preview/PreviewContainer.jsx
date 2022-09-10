@@ -12,8 +12,8 @@ class PreviewContainer extends React.Component {
   render() {
     return (
       <div className="preview-container">
-        <PreviewHeader print={this.printRef.current} />
-        <Preview ref={this.printRef} sections={this.props.sections} />
+        <PreviewHeader print={this.printRef} />
+        <Preview printRef={this.printRef} sections={this.props.sections} />
       </div>
     );
   }

@@ -1,32 +1,71 @@
-.preview{
+.preview {
     grid-area: p-preview;
     position: relative;
     align-self: start;
-    justify-self:end;
+    justify-self: end;
     width: 100%;
     height: 100%;
     background-color: white;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    padding: 50px 0px;
 }
 
-.preview::-webkit-scrollbar{
+.preview::-webkit-scrollbar {
     display: none;
 }
 
-.personal_section{
+.personal_section,
+.experience_section,
+.education_section {
     width: 100%;
-    height: 2in;
-    background-color: var(--button-careful-color);
+
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+    font-size: 13pt;
 }
-.experience_section{
+
+.personal__contact-info {
+    display: flex;
     width: 100%;
-    height: 7in;
-    background-color: var(--button-good-color);
+    column-gap: 20px;
+    margin-top: 10px;
 }
-.education_section{
-    width: 100%;
-    height: 2in;
-    background-color: var(--section-color);
+
+.personal__objective {
+    margin-top: 20px;
 }
+
+.experience_entry{
+    margin-bottom: 20px;
+}
+
+.education_entry{
+    display: grid;
+    grid-template-columns: 7fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'school first last' 'major major major';
+    width: 100%
+}
+.education__school{
+    grid-area: school;
+    font-size: 17pt;
+    font-weight: 550;
+}
+.education__major{
+    grid-area: major;
+    font-size: 15pt;
+    font-weight: 500;
+}
+.education__start{
+    grid-area: first;
+    font-weight: 500;
+    font-size: 14pt;
+}
+.education__end{
+    grid-area: last;
+    font-weight: 500;
+    font-size: 14pt;
+} 

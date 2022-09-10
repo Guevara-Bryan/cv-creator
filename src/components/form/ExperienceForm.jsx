@@ -1,30 +1,21 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 
-import '../../styles/ExperienceForm.css';
+
 
 class ExperienceForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { content: this.props.content };
+    this.state = { ...this.props.content };
   }
 
   generateExp() {
-    const entry = {
-      company: '',
-      position: '',
-      description: '',
-    };
-
-    const key = nanoid();
-
-    this.setState((prev) => {
-      return {
-        content: {
-          ...prev.content,
-          [key]: entry,
-        },
-      };
+    this.setState({
+      [nanoid()]: {
+        company: '',
+        position: '',
+        description: '',
+      },
     });
   }
 
@@ -33,14 +24,11 @@ class ExperienceForm extends React.Component {
 
     this.setState(
       (prev) => {
-        const temp = this.state.content;
-        temp[id][name] = value;
-        return {
-          content: temp,
-        };
+        prev[id][name] = value;
+        return prev;
       },
       () => {
-        this.props.updater('experience', this.state.content);
+        this.props.updater('experience', this.state);
       }
     );
   }
@@ -50,28 +38,23 @@ class ExperienceForm extends React.Component {
 
     this.setState(
       (prev) => {
-        const other = prev.content;
-        delete other[id];
-        return {
-          content: other,
-        };
+        delete prev[id];
+        return prev;
       },
       () => {
-        this.props.updater('experience', this.state.content);
+        this.props.updater('experience', this.state);
       }
     );
-
-    console.log(this.state.content);
   }
 
   render() {
     return (
       <fieldset className="experience section">
         <legend>Experience</legend>
-        {Object.keys(this.state.content).map((key) => {
-          const exp = this.state.content[key];
+        {Object.keys(this.state).map((key) => {
+          const exp = this.state[key];
           return (
-            <div key={key} className="experience-entry">
+            <div key={key} className="group-entry">
               <div>
                 <label>Company:</label>
                 <input
@@ -101,19 +84,25 @@ class ExperienceForm extends React.Component {
                 <textarea
                   id={key}
                   name="description"
-                  className="experience__description input"
+                  className="long-text input"
                   value={exp.description}
                   onChange={this.onChange.bind(this)}
                   rows={30}
                 />
               </div>
-              <button id={key} className='experience__delete' onClick={this.handleExpDelete.bind(this)}>
+              <button
+                id={key}
+                className="careful-button"
+                onClick={this.handleExpDelete.bind(this)}
+              >
                 Delete
               </button>
             </div>
           );
         })}
-        <button className='experience__add' onClick={this.generateExp.bind(this)}>Add Experience</button>
+        <button className="good-button" onClick={this.generateExp.bind(this)}>
+          Add Experience
+        </button>
       </fieldset>
     );
   }

@@ -6,7 +6,7 @@ class PreviewHeader extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  
   render() {
     return (
       <div className="preview-header">
@@ -17,7 +17,7 @@ class PreviewHeader extends React.Component {
             );
           }}
           content={() => {
-            return this.props.print;
+            return this.props.print.current;
           }}
         />
       </div>

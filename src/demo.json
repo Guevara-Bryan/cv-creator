@@ -1,0 +1,33 @@
+{
+    "personal":
+    {
+        "first": "John",
+        "last": "Doe",
+        "phone": "5097601815",
+        "email": "johnDoe@mail.com",
+        "objective": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id feugiat arcu. Aliquam nec ipsum ut ante fringilla elementum et ut purus. Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien. Nunc condimentum nulla sit amet tortor pharetra rutrum. Duis in cursus sapien, vitae egestas ipsum. In eu efficitur nisi."
+    },
+    "experience":
+    [
+        [
+            "Big Company One",
+            "Big Position One",
+            "Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum"
+        ],
+        [
+            "Big Company Two",
+            "Big Position Two",
+            "Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum"
+        ],
+        [
+            "Big Company Three",
+            "Big Position Three",
+            "Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum"
+        ]
+    ]
+    ,
+    "education":
+    [
+        
+    ]
+}

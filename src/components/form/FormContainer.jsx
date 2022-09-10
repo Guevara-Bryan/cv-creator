@@ -16,7 +16,7 @@ class FormContainer extends React.Component {
       <div className="form-container">
         <PersonalForm content={personal} updater={this.props.updater} />
         <ExperienceForm content={experience} updater={this.props.updater} />
-        <EducationForm content={education} />
+        <EducationForm content={education} updater={this.props.updater}/>
       </div>
     );
   }
