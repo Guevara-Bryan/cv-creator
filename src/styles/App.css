@@ -1,5 +1,32 @@
+:root{
+    --base-color: black;
+    --container-color: #2C3333;
+    --section-color: #395B64;
+    --button-good-color: #A5C9CA;
+    --button-careful-color: #FBA1A1;
+    --button-text-color: #2C3333;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+body{
+    overflow: hidden;
+}
+
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 0.5fr 5fr;
+    grid-template-columns: 1fr 1.6fr;
+
+    grid-template-areas: 'header preview'
+                         'form preview';
+    background-color: var(--base-color, black);
+    padding: 0 0 0 30px;
+    overflow: hidden;
+}   

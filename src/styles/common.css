@@ -1,0 +1,109 @@
+.header {
+    grid-area: header;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+
+    font-size: 15pt;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section {
+    color: white;
+    width: 100%;
+    height: fit-content;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--section-color);
+    padding: 30px;
+
+    font-size: 14pt;
+    row-gap: 10px;
+}
+
+.section>legend {
+    font-size: 20pt;
+    margin-left: 10px;
+    padding: 0px 10px;
+}
+
+.input {
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+
+    color: white;
+    padding: 0px 10px;
+    font-size: 12pt;
+    transition: box-shadow 300ms;
+    margin-top: 5px;
+}
+
+.input:focus {
+
+    outline: none;
+    box-shadow: inset 0px -3px 4px 0px rgb(0, 178, 255);
+}
+
+button {
+    color: var(--button-text-color);
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 12pt;
+    padding: 10px;
+    transition: transform 250ms;
+    border: none;
+}
+
+button:hover {
+    transform: scale(1.025);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+.good-button {
+    background-color: var(--button-good-color);
+    border-radius: 0px 0px 20px 20px;
+}
+
+.careful-button {
+    background-color: var(--button-careful-color);
+    border-radius: 0px 0px 20px 20px;
+}
+
+.group-entry {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: #2f4b53;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.long-text {
+    resize: vertical;
+    height: 200px;
+    padding: 5px 5px;
+    overflow: hidden;
+}
+
+.long-text::-webkit-scrollbar {
+    display: none;
+}
+
+.title {
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+}
