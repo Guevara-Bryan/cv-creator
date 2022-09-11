@@ -5,77 +5,66 @@ import '../../styles/common.css';
 class PersonalForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...this.props.content };
+    this.updateValue = this.updateValue.bind(this);
   }
 
-  updateValue(e) {
-    this.setState(
-      (prev) => {
-        return {
-          [e.target.id]: {
-            label: prev[e.target.id].label,
-            value: e.target.value,
-          },
-        };
-      },
-      () => {
-        this.props.updater('personal', this.state);
-      }
-    );
+  updateValue(e){
+    this.props.updater.personal(e.target.id, e.target.value);
   }
 
   render() {
+    const personal = this.props.content;
     return (
       <fieldset className="personal section">
         <legend>Personal Information</legend>
         <div className="group-entry">
           <div>
-            <label>{`${this.state.first.label}:`}</label>
+            <label>{`${personal.first.label}:`}</label>
             <input
               id="first"
               type="text"
               className="input"
-              value={this.state.first.value}
-              onChange={this.updateValue.bind(this)}
+              value={personal.first.value}
+              onChange={this.updateValue}
             />
           </div>
           <div>
-            <label>{`${this.state.last.label}:`}</label>
+            <label>{`${personal.last.label}:`}</label>
             <input
               id="last"
               type="text"
               className="input"
-              value={this.state.last.value}
-              onChange={this.updateValue.bind(this)}
+              value={personal.last.value}
+              onChange={this.updateValue}
             />
           </div>
           <div>
-            <label>{`${this.state.phone.label}:`}</label>
+            <label>{`${personal.phone.label}:`}</label>
             <input
               id="phone"
               type="text"
               className="input"
-              value={this.state.phone.value}
-              onChange={this.updateValue.bind(this)}
+              value={personal.phone.value}
+              onChange={this.updateValue}
             />
           </div>
           <div>
-            <label>{`${this.state.email.label}:`}</label>
+            <label>{`${personal.email.label}:`}</label>
             <input
               id="email"
               type="email"
               className="input"
-              value={this.state.email.value}
-              onChange={this.updateValue.bind(this)}
+              value={personal.email.value}
+              onChange={this.updateValue}
             />
           </div>
           <div>
-            <label>{`${this.state.objective.label}:`}</label>
+            <label>{`${personal.objective.label}:`}</label>
             <textarea
               id="objective"
               className="long-text input"
-              value={this.state.objective.value}
-              onChange={this.updateValue.bind(this)}
+              value={personal.objective.value}
+              onChange={this.updateValue}
             />
           </div>
         </div>

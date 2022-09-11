@@ -64,6 +64,8 @@ class App extends React.Component {
         },
       },
     };
+
+    this.updatePersonal = this.updatePersonal.bind(this);
   }
 
   updateState(label, value) {
@@ -71,13 +73,22 @@ class App extends React.Component {
     this.setState(tp);
   }
 
+  updatePersonal(selector, value){
+    this.setState(prev =>  {
+        prev.personal[selector].value = value
+        return prev
+      })
+  }
+
+  
+
   render() {
     return (
       <div className="main">
         <Header />
         <FormContainer
           sections={this.state}
-          updater={this.updateState.bind(this)}
+          updater={ { personal: this.updatePersonal } }
         />
         <PreviewContainer sections={this.state}/>
       </div>
