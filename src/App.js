@@ -29,25 +29,29 @@ class App extends React.Component {
         },
         objective: {
           label: 'Objective',
-          value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id feugiat arcu. Aliquam nec ipsum ut ante fringilla elementum et ut purus. Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.'
+          value:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id feugiat arcu. Aliquam nec ipsum ut ante fringilla elementum et ut purus. Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.',
         },
       },
       experience: {
         [nanoid()]: {
           company: 'Big Company One',
           position: 'Big Position One',
-          description: 'Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.',
+          description:
+            'Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.',
         },
         [nanoid()]: {
           company: 'Big Company Two',
           position: 'Big Position Two',
-          description: 'Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.',
+          description:
+            'Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.',
         },
         [nanoid()]: {
           company: 'Big Company Three',
           position: 'Big Position Three',
-          description: 'Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.',
-        }
+          description:
+            'Praesent a pellentesque est. Sed egestas vitae elit at tincidunt. Nunc neque nunc, auctor porta lectus nec, aliquam auctor massa. Mauris vitae diam aliquam, cursus massa ac, auctor ipsum Duis ultricies dolor a mi eleifend, quis venenatis odio malesuada. Nunc pellentesque eu dui vitae blandit. Aliquam id vulputate sem, a sagittis nisi. In hac habitasse platea dictumst. Fusce tempus libero vitae elit fermentum imperdiet at eget sapien.',
+        },
       },
       education: {
         [nanoid()]: {
@@ -66,6 +70,8 @@ class App extends React.Component {
     };
 
     this.updatePersonal = this.updatePersonal.bind(this);
+    this.updateExperience = this.updateExperience.bind(this);
+    this.deleteExperience = this.deleteExperience.bind(this);
   }
 
   updateState(label, value) {
@@ -73,14 +79,35 @@ class App extends React.Component {
     this.setState(tp);
   }
 
-  updatePersonal(selector, value){
-    this.setState(prev =>  {
-        prev.personal[selector].value = value
-        return prev
-      })
+  updatePersonal(selector, value) {
+    this.setState((prev) => {
+      prev.personal[selector].value = value;
+      return prev;
+    });
   }
 
-  
+  // If id does not exists it adds a new empty experience to the state.
+  updateExperience(id, selector, value) {
+    this.setState((prev) => {
+      if (!prev.experience.hasOwnProperty(id)){
+        prev.experience[id] = {
+          company: '',
+          position: '',
+          description: '',
+        }
+      } else {
+        prev.experience[id][selector] = value
+      }
+      return prev
+    }, ()=>{console.log(this.state.experience)})
+  }
+
+  deleteExperience(id){
+    this.setState((prev) => {
+      delete prev.experience[id];
+      return prev
+    })
+  }
 
   render() {
     return (
@@ -88,9 +115,13 @@ class App extends React.Component {
         <Header />
         <FormContainer
           sections={this.state}
-          updater={ { personal: this.updatePersonal } }
+          updater={{
+            personal: this.updatePersonal,
+            experience: this.updateExperience,
+            deleteExperience: this.deleteExperience,
+          }}
         />
-        <PreviewContainer sections={this.state}/>
+        <PreviewContainer sections={this.state} />
       </div>
     );
   }
