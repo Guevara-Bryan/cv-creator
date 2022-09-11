@@ -76,11 +76,6 @@ class App extends React.Component {
     this.deleteEducation = this.deleteEducation.bind(this);
   }
 
-  updateState(label, value) {
-    const tp = { [label]: value };
-    this.setState(tp);
-  }
-
   updatePersonal(selector, value) {
     this.setState((prev) => {
       prev.personal[selector].value = value;
