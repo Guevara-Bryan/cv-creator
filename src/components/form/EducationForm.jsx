@@ -4,55 +4,26 @@ import { nanoid } from 'nanoid';
 class EducationForm extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { ...this.props.content };
-  }
-
-  generateEdu() {
-    this.setState({
-      [nanoid()]: {
-        school: '',
-        major: '',
-        from: '',
-        to: '',
-      },
-    });
+    this.onChange = this.onChange.bind(this);
+    this.handleEduDelete = this.handleEduDelete.bind(this);
   }
 
   onChange(e) {
     const { id, name, value } = e.target;
-
-    this.setState(
-      (prev) => {
-        prev[id][name] = value;
-        return prev;
-      },
-      () => {
-        this.props.updater('education', this.state);
-      }
-    );
+    this.props.updater.education(id, name, value);
   }
 
   handleEduDelete(e) {
     const { id } = e.target;
-
-    this.setState(
-      (prev) => {
-        delete prev[id];
-        return prev;
-      },
-      () => {
-        this.props.updater('education', this.state);
-      }
-    );
+    this.props.updater.deleteEducation(id);
   }
 
   render() {
     return (
       <fieldset className="education section">
         <legend>Education</legend>
-        {Object.entries(this.state).map((entry) => {
-          const [key, edu] = entry;
+        {Object.keys(this.props.content).map((key) => {
+          const edu = this.props.content[key];
           return (
             <div key={key} className="group-entry">
               <div>
@@ -63,7 +34,7 @@ class EducationForm extends React.Component {
                   name="school"
                   type="text"
                   value={edu.school}
-                  onChange={this.onChange.bind(this)}
+                  onChange={this.onChange}
                 />
               </div>
               <div>
@@ -74,7 +45,7 @@ class EducationForm extends React.Component {
                   name="major"
                   type="text"
                   value={edu.major}
-                  onChange={this.onChange.bind(this)}
+                  onChange={this.onChange}
                 />
               </div>
               <div>
@@ -86,7 +57,7 @@ class EducationForm extends React.Component {
                   type="text"
                   maxLength={4}
                   value={edu.from}
-                  onChange={this.onChange.bind(this)}
+                  onChange={this.onChange}
                 />
               </div>
               <div>
@@ -98,21 +69,26 @@ class EducationForm extends React.Component {
                   type="text"
                   maxLength={4}
                   value={edu.to}
-                  onChange={this.onChange.bind(this)}
+                  onChange={this.onChange}
                 />
               </div>
 
               <button
                 id={key}
                 className="careful-button"
-                onClick={this.handleEduDelete.bind(this)}
+                onClick={this.handleEduDelete}
               >
                 Delete
               </button>
             </div>
           );
         })}
-        <button className="good-button" onClick={this.generateEdu.bind(this)}>
+        <button
+          className="good-button"
+          onClick={() => {
+            this.props.updater.education(nanoid());
+          }}
+        >
           Add Education
         </button>
       </fieldset>

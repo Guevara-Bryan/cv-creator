@@ -72,6 +72,8 @@ class App extends React.Component {
     this.updatePersonal = this.updatePersonal.bind(this);
     this.updateExperience = this.updateExperience.bind(this);
     this.deleteExperience = this.deleteExperience.bind(this);
+    this.updateEducation = this.updateEducation.bind(this);
+    this.deleteEducation = this.deleteEducation.bind(this);
   }
 
   updateState(label, value) {
@@ -89,24 +91,48 @@ class App extends React.Component {
   // If id does not exists it adds a new empty experience to the state.
   updateExperience(id, selector, value) {
     this.setState((prev) => {
-      if (!prev.experience.hasOwnProperty(id)){
+      if (!prev.experience.hasOwnProperty(id)) {
         prev.experience[id] = {
           company: '',
           position: '',
           description: '',
-        }
+        };
       } else {
-        prev.experience[id][selector] = value
+        prev.experience[id][selector] = value;
       }
-      return prev
-    }, ()=>{console.log(this.state.experience)})
+      return prev;
+    });
   }
 
-  deleteExperience(id){
+  deleteExperience(id) {
     this.setState((prev) => {
       delete prev.experience[id];
-      return prev
-    })
+      return prev;
+    });
+  }
+
+  // If id does not exists it adds a new empty education to the state.
+  updateEducation(id, selector, value) {
+    this.setState((prev) => {
+      if (!prev.education.hasOwnProperty(id)) {
+        prev.education[id] = {
+          school: '',
+          major: '',
+          from: '',
+          to: '',
+        };
+      } else {
+        prev.education[id][selector] = value;
+      }
+      return prev;
+    });
+  }
+
+  deleteEducation(id) {
+    this.setState((prev) => {
+      delete prev.education[id];
+      return prev;
+    });
   }
 
   render() {
@@ -119,6 +145,8 @@ class App extends React.Component {
             personal: this.updatePersonal,
             experience: this.updateExperience,
             deleteExperience: this.deleteExperience,
+            education: this.updateEducation,
+            deleteEducation: this.deleteEducation,
           }}
         />
         <PreviewContainer sections={this.state} />
