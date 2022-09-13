@@ -1,22 +1,18 @@
-import React from 'react';
 import '../../styles/PreviewContainer.css';
 import Preview from './Preview';
 import PreviewHeader from './PreviewHeader';
 
-class PreviewContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.printRef = React.createRef();
-  }
+import { useRef } from 'react';
 
-  render() {
-    return (
-      <div className="preview-container">
-        <PreviewHeader print={this.printRef} />
-        <Preview printRef={this.printRef} sections={this.props.sections} />
-      </div>
-    );
-  }
+function PreviewContainer(props) {
+  const printRef = useRef(null);
+
+  return (
+    <div className="preview-container">
+      <PreviewHeader print={printRef} />
+      <Preview printRef={printRef} sections={props.sections} />
+    </div>
+  );
 }
 
 export default PreviewContainer;

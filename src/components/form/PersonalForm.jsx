@@ -1,19 +1,11 @@
-import React from 'react';
-
 import '../../styles/common.css';
 
-class PersonalForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.updateValue = this.updateValue.bind(this);
+function PersonalForm (props) {
+  function updateValue(e){
+    props.updater.personal(e.target.id, e.target.value);
   }
 
-  updateValue(e){
-    this.props.updater.personal(e.target.id, e.target.value);
-  }
-
-  render() {
-    const personal = this.props.content;
+  const personal = props.content;
     return (
       <fieldset className="personal section">
         <legend>Personal Information</legend>
@@ -25,7 +17,7 @@ class PersonalForm extends React.Component {
               type="text"
               className="input"
               value={personal.first.value}
-              onChange={this.updateValue}
+              onChange={updateValue}
             />
           </div>
           <div>
@@ -35,7 +27,7 @@ class PersonalForm extends React.Component {
               type="text"
               className="input"
               value={personal.last.value}
-              onChange={this.updateValue}
+              onChange={updateValue}
             />
           </div>
           <div>
@@ -45,7 +37,7 @@ class PersonalForm extends React.Component {
               type="text"
               className="input"
               value={personal.phone.value}
-              onChange={this.updateValue}
+              onChange={updateValue}
             />
           </div>
           <div>
@@ -55,7 +47,7 @@ class PersonalForm extends React.Component {
               type="email"
               className="input"
               value={personal.email.value}
-              onChange={this.updateValue}
+              onChange={updateValue}
             />
           </div>
           <div>
@@ -64,13 +56,12 @@ class PersonalForm extends React.Component {
               id="objective"
               className="long-text input"
               value={personal.objective.value}
-              onChange={this.updateValue}
+              onChange={updateValue}
             />
           </div>
         </div>
       </fieldset>
     );
-  }
 }
 
 export default PersonalForm;

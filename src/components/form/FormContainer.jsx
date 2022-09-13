@@ -1,25 +1,18 @@
-import React from 'react';
 import '../../styles/FormContainer.css';
 
 import EducationForm from './EducationForm';
 import ExperienceForm from './ExperienceForm';
 import PersonalForm from './PersonalForm';
 
-class FormContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { personal, experience, education } = this.props.sections;
-    return (
-      <div className="form-container">
-        <PersonalForm content={personal} updater={this.props.updater} />
-        <ExperienceForm content={experience} updater={this.props.updater} />
-        <EducationForm content={education} updater={this.props.updater}/>
-      </div>
-    );
-  }
+function FormContainer ({sections, updater}){
+  const { personal, experience, education } = sections;
+  return (
+    <div className="form-container">
+      <PersonalForm content={personal} updater={updater} />
+      <ExperienceForm content={experience} updater={updater} />
+      <EducationForm content={education} updater={updater}/>
+    </div>
+  );
 }
 
 export default FormContainer;
