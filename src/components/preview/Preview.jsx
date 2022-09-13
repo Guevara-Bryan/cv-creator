@@ -1,16 +1,10 @@
-import React from 'react';
 import '../../styles/Preview.css';
 
-class Preview extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { personal, experience, education } = this.props.sections;
+function Preview (props){
+  const { personal, experience, education } = props.sections;
 
     return (
-      <div className="preview" ref={this.props.printRef}>
+      <div className="preview" ref={props.printRef}>
         <div className="personal_section">
           <div className="personal__fullname">
             <h1>{`${personal.first.value} ${personal.last.value}`}</h1>
@@ -52,7 +46,6 @@ class Preview extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 export default Preview;
